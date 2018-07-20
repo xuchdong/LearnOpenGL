@@ -15,6 +15,7 @@
 		4100C98621017C6A00C24683 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4100C98521017C6A00C24683 /* CoreVideo.framework */; };
 		4100C98821017C7100C24683 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4100C98721017C7100C24683 /* IOKit.framework */; };
 		4100C98A21017C9800C24683 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4100C98921017C9800C24683 /* AppKit.framework */; };
+		4100C9952101D5E000C24683 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9942101D5E000C24683 /* glad.c */; };
 		413BA41121016D7B00AF6D95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413BA41021016D7B00AF6D95 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		4100C98521017C6A00C24683 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		4100C98721017C7100C24683 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		4100C98921017C9800C24683 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		4100C9942101D5E000C24683 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glad.c; path = "third-party/glad/src/glad.c"; sourceTree = "<group>"; };
 		413BA40D21016D7B00AF6D95 /* LearnOpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LearnOpenGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		413BA41021016D7B00AF6D95 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,9 +79,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4100C9922101D5A300C24683 /* third-party */ = {
+			isa = PBXGroup;
+			children = (
+				4100C9932101D5BF00C24683 /* glad */,
+			);
+			name = "third-party";
+			sourceTree = "<group>";
+		};
+		4100C9932101D5BF00C24683 /* glad */ = {
+			isa = PBXGroup;
+			children = (
+				4100C9942101D5E000C24683 /* glad.c */,
+			);
+			name = glad;
+			sourceTree = "<group>";
+		};
 		413BA40421016D7B00AF6D95 = {
 			isa = PBXGroup;
 			children = (
+				4100C9922101D5A300C24683 /* third-party */,
 				413BA40F21016D7B00AF6D95 /* LearnOpenGL */,
 				413BA40E21016D7B00AF6D95 /* Products */,
 				4100C978210179E000C24683 /* Frameworks */,
@@ -160,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				413BA41121016D7B00AF6D95 /* main.cpp in Sources */,
+				4100C9952101D5E000C24683 /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
