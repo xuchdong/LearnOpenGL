@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4100C97C21017A0000C24683 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4100C97B21017A0000C24683 /* libglfw3.a */; };
 		413BA41121016D7B00AF6D95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413BA41021016D7B00AF6D95 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4100C97B21017A0000C24683 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = "third-party/glfw/lib/libglfw3.a"; sourceTree = "<group>"; };
 		413BA40D21016D7B00AF6D95 /* LearnOpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LearnOpenGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		413BA41021016D7B00AF6D95 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,17 +34,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4100C97C21017A0000C24683 /* libglfw3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4100C978210179E000C24683 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4100C97B21017A0000C24683 /* libglfw3.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		413BA40421016D7B00AF6D95 = {
 			isa = PBXGroup;
 			children = (
 				413BA40F21016D7B00AF6D95 /* LearnOpenGL */,
 				413BA40E21016D7B00AF6D95 /* Products */,
+				4100C978210179E000C24683 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,7 +246,14 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EBPA23G69Z;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/third-party/glad/include";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/third-party/glad/include",
+					"$(PROJECT_DIR)/third-party/glfw/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/third-party/glfw/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -244,7 +263,14 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EBPA23G69Z;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/third-party/glad/include";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/third-party/glad/include",
+					"$(PROJECT_DIR)/third-party/glfw/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/third-party/glfw/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
