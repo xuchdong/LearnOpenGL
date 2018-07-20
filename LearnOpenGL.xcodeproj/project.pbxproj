@@ -234,6 +234,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EBPA23G69Z;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/third-party/glad/include";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -243,6 +244,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EBPA23G69Z;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/third-party/glad/include";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
