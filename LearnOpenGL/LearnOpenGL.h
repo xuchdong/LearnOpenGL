@@ -13,7 +13,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#define HELLO_TRIANGLE
+#define SHADERS
 
 extern void init();
 extern void draw();
