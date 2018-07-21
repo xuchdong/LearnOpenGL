@@ -7,8 +7,8 @@
 //
 
 #include <iostream>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+
+#include "LearnOpenGL.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void progress_input(GLFWwindow *window);
@@ -35,17 +35,22 @@ int main(int argc, const char * argv[]) {
         printf("Failed to initialize GLAD\n");
         return -1;
     }
+    
+    init();
 
     while (!glfwWindowShouldClose(window))
     {
         progress_input(window);
-
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+
+        draw();
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+
+    clean();
 
     glfwTerminate();
     return 0;
