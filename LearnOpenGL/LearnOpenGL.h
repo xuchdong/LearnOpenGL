@@ -13,7 +13,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#define SHADERSEX
+#define HELLO_TEXTURE
 
 extern void init();
 extern void draw();
