@@ -13,7 +13,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#define HELLO_TRANSFORM
+#define HELLO_COORD
 
 extern void init();
 extern void draw();
