@@ -13,7 +13,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#define HELLO_TEXTURE
+#define HELLO_TRANSFORM
 
 extern void init();
 extern void draw();
