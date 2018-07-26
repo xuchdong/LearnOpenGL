@@ -30,6 +30,10 @@
 		4100C9BF2106D52B00C24683 /* hello_transform.vs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9BD2106D52B00C24683 /* hello_transform.vs */; };
 		4100C9C12106DB3900C24683 /* HelloCoord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9C02106DB3900C24683 /* HelloCoord.cpp */; };
 		4100C9C62106DBB300C24683 /* hello_coord.vs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9C42106DBB300C24683 /* hello_coord.vs */; };
+		4100C9C921087F6A00C24683 /* HelloColors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9C821087F6A00C24683 /* HelloColors.cpp */; };
+		4100C9CC21088E9200C24683 /* hello_colors_light.vs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9CA21088E9200C24683 /* hello_colors_light.vs */; };
+		4100C9CE21088EDB00C24683 /* hello_colors_obj.vs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9CD21088EDB00C24683 /* hello_colors_obj.vs */; };
+		4100C9D021088F4E00C24683 /* hello_colors_obj.fs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9CF21088F4E00C24683 /* hello_colors_obj.fs */; };
 		413BA41121016D7B00AF6D95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413BA41021016D7B00AF6D95 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +80,11 @@
 		4100C9C42106DBB300C24683 /* hello_coord.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hello_coord.vs; sourceTree = "<group>"; };
 		4100C9C52106DBB300C24683 /* hello_coord.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hello_coord.fs; sourceTree = "<group>"; };
 		4100C9C721080BC700C24683 /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		4100C9C821087F6A00C24683 /* HelloColors.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloColors.cpp; sourceTree = "<group>"; };
+		4100C9CA21088E9200C24683 /* hello_colors_light.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hello_colors_light.vs; sourceTree = "<group>"; };
+		4100C9CB21088E9200C24683 /* hello_colors_light.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hello_colors_light.fs; sourceTree = "<group>"; };
+		4100C9CD21088EDB00C24683 /* hello_colors_obj.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hello_colors_obj.vs; sourceTree = "<group>"; };
+		4100C9CF21088F4E00C24683 /* hello_colors_obj.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hello_colors_obj.fs; sourceTree = "<group>"; };
 		413BA40D21016D7B00AF6D95 /* LearnOpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LearnOpenGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		413BA41021016D7B00AF6D95 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +150,10 @@
 				4100C9BE2106D52B00C24683 /* hello_transform.fs */,
 				4100C9C42106DBB300C24683 /* hello_coord.vs */,
 				4100C9C52106DBB300C24683 /* hello_coord.fs */,
+				4100C9CA21088E9200C24683 /* hello_colors_light.vs */,
+				4100C9CB21088E9200C24683 /* hello_colors_light.fs */,
+				4100C9CD21088EDB00C24683 /* hello_colors_obj.vs */,
+				4100C9CF21088F4E00C24683 /* hello_colors_obj.fs */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -189,6 +202,7 @@
 				4100C9BB210627F000C24683 /* HelloTransform.cpp */,
 				4100C9C02106DB3900C24683 /* HelloCoord.cpp */,
 				4100C9C721080BC700C24683 /* Camera.h */,
+				4100C9C821087F6A00C24683 /* HelloColors.cpp */,
 			);
 			path = LearnOpenGL;
 			sourceTree = "<group>";
@@ -252,6 +266,8 @@
 			files = (
 				4100C9BC210627F000C24683 /* HelloTransform.cpp in Sources */,
 				4100C9BF2106D52B00C24683 /* hello_transform.vs in Sources */,
+				4100C9CE21088EDB00C24683 /* hello_colors_obj.vs in Sources */,
+				4100C9C921087F6A00C24683 /* HelloColors.cpp in Sources */,
 				4100C99C210311CE00C24683 /* HelloWindows.cpp in Sources */,
 				4100C9B0210383EE00C24683 /* shaders.fs in Sources */,
 				4100C9B92104DB8100C24683 /* hello_texture.fs in Sources */,
@@ -262,7 +278,9 @@
 				4100C9AC210382F600C24683 /* Shader.cpp in Sources */,
 				4100C9C62106DBB300C24683 /* hello_coord.vs in Sources */,
 				4100C9B62104D79B00C24683 /* HelloTexture.cpp in Sources */,
+				4100C9CC21088E9200C24683 /* hello_colors_light.vs in Sources */,
 				4100C9C12106DB3900C24683 /* HelloCoord.cpp in Sources */,
+				4100C9D021088F4E00C24683 /* hello_colors_obj.fs in Sources */,
 				4100C9B32104D72600C24683 /* stb_image.cpp in Sources */,
 				4100C99E21036DFD00C24683 /* Shaders.cpp in Sources */,
 				4100C99A2103100C00C24683 /* HelloTriangle.cpp in Sources */,

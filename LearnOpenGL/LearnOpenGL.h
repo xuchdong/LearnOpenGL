@@ -13,9 +13,9 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#define HELLO_COORD
+#define HELLO_COLORS
 
-extern void init();
+extern void init(GLFWwindow* window);
 extern void draw();
 extern void clean();
 

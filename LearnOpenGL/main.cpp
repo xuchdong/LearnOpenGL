@@ -36,7 +36,7 @@ int main(int argc, const char * argv[]) {
         return -1;
     }
     
-    init();
+    init(window);
 
     while (!glfwWindowShouldClose(window))
     {
