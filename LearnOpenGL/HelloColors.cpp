@@ -12,15 +12,13 @@
 #ifdef HELLO_COLORS
 #include <string>
 #include <iostream>
-#include "Shader.h"
+#include "shader_m.h"
 #include "Camera.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
 using namespace std;
-
-string basePath = "/Users/xuchdong/xuchdong/LearnOpenGL/src/";
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 bool firstMouse = true;
@@ -66,7 +64,6 @@ void init(GLFWwindow* window)
     glfwSetCursorPosCallback(window, mouse_callback);
     glfwSetScrollCallback(window, scroll_callback);
 
-    // tell GLFW to capture our mouse
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     float vertices[] = {
@@ -137,27 +134,18 @@ void init(GLFWwindow* window)
 void draw()
 {
     glClear(GL_DEPTH_BUFFER_BIT);
-
     glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), 800.0f / 600, 0.1f, 100.0f);
     glm::mat4 view = camera.GetViewMatrix();
     glm::mat4 model;
 
-    unsigned int modelLoc, viewLoc, projectionLoc, objColorLoc, lightColorLoc;
-
     objShader->use();
-    objColorLoc = glGetUniformLocation(objShader->ID, "objColor");
-    lightColorLoc = glGetUniformLocation(objShader->ID, "lightColor");
-    glUniform3f(objColorLoc, 1.0f, 0.5f, 0.31f);
-    glUniform3f(lightColorLoc, 1.0f, 1.0f, 1.0f);
+    objShader->setVec3("objColor", 1.0f, 0.5f, 0.31f);
+    objShader->setVec3("lightColor", 1.0f, 1.0f, 1.0f);
 
-    //model = glm::mat4(1.0f);
-    model = glm::mat4();
-    modelLoc = glGetUniformLocation(objShader->ID, "model");
-    viewLoc = glGetUniformLocation(objShader->ID, "view");
-    projectionLoc = glGetUniformLocation(objShader->ID, "projection");
-    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-    glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-    glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
+    model = glm::mat4(1.0f);
+    objShader->setMat4("model", model);
+    objShader->setMat4("view", view);
+    objShader->setMat4("projection", projection);
 
     glBindVertexArray(objVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -166,12 +154,9 @@ void draw()
     model = glm::mat4(1.0f);
     model = glm::translate(model, lightPos);
     model = glm::scale(model, glm::vec3(0.2f));
-    modelLoc = glGetUniformLocation(lightShader->ID, "model");
-    viewLoc = glGetUniformLocation(lightShader->ID, "view");
-    projectionLoc = glGetUniformLocation(lightShader->ID, "projection");
-    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-    glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-    glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
+    lightShader->setMat4("model", model);
+    lightShader->setMat4("view", view);
+    lightShader->setMat4("projection", projection);
     glBindVertexArray(lightVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
 }
