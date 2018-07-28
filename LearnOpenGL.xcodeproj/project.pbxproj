@@ -20,7 +20,6 @@
 		4100C99C210311CE00C24683 /* HelloWindows.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C99B210311CE00C24683 /* HelloWindows.cpp */; };
 		4100C99E21036DFD00C24683 /* Shaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C99D21036DFD00C24683 /* Shaders.cpp */; };
 		4100C9A92103829600C24683 /* ShadersEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9A82103829600C24683 /* ShadersEX.cpp */; };
-		4100C9AC210382F600C24683 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9AA210382F600C24683 /* Shader.cpp */; };
 		4100C9AE210383BF00C24683 /* shaders.vs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9AD210383BF00C24683 /* shaders.vs */; };
 		4100C9B0210383EE00C24683 /* shaders.fs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9AF210383EE00C24683 /* shaders.fs */; };
 		4100C9B32104D72600C24683 /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9B22104D72600C24683 /* stb_image.cpp */; };
@@ -64,7 +63,6 @@
 		4100C99B210311CE00C24683 /* HelloWindows.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloWindows.cpp; sourceTree = "<group>"; };
 		4100C99D21036DFD00C24683 /* Shaders.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shaders.cpp; sourceTree = "<group>"; };
 		4100C9A82103829600C24683 /* ShadersEX.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShadersEX.cpp; sourceTree = "<group>"; };
-		4100C9AA210382F600C24683 /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
 		4100C9AB210382F600C24683 /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
 		4100C9AD210383BF00C24683 /* shaders.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shaders.vs; sourceTree = "<group>"; };
 		4100C9AF210383EE00C24683 /* shaders.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shaders.fs; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				4100C9B12104D70000C24683 /* stb_image.h */,
-				4100C9AA210382F600C24683 /* Shader.cpp */,
 				4100C9AB210382F600C24683 /* Shader.h */,
 				413BA41021016D7B00AF6D95 /* main.cpp */,
 				4100C99621030F0A00C24683 /* LearnOpenGL.h */,
@@ -277,7 +274,6 @@
 				4100C9952101D5E000C24683 /* glad.c in Sources */,
 				4100C9A92103829600C24683 /* ShadersEX.cpp in Sources */,
 				4100C9AE210383BF00C24683 /* shaders.vs in Sources */,
-				4100C9AC210382F600C24683 /* Shader.cpp in Sources */,
 				4100C9C62106DBB300C24683 /* hello_coord.vs in Sources */,
 				4100C9B62104D79B00C24683 /* HelloTexture.cpp in Sources */,
 				4100C9CC21088E9200C24683 /* hello_colors_light.vs in Sources */,
