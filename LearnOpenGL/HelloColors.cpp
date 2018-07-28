@@ -20,14 +20,15 @@
 
 using namespace std;
 
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 5.0f));
 bool firstMouse = true;
 
 // timing
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
-float lastX = 400.0f;
-float lastY = 300.0f;
+
+float lastX = SRC_WIDTH / 2.0f;
+float lastY = SRC_HEIGHT / 2.0f;
 
 glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
@@ -63,7 +64,6 @@ void init(GLFWwindow* window)
 {
     glfwSetCursorPosCallback(window, mouse_callback);
     glfwSetScrollCallback(window, scroll_callback);
-
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     float vertices[] = {
@@ -107,7 +107,7 @@ void init(GLFWwindow* window)
         0.5f,  0.5f,  0.5f,
         0.5f,  0.5f,  0.5f,
         -0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f, -0.5f
+        -0.5f,  0.5f, -0.5f,
     };
 
 
@@ -125,7 +125,7 @@ void init(GLFWwindow* window)
     glGenVertexArrays(1, &lightVAO);
     glBindVertexArray(lightVAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)(0));
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
     glEnableVertexAttribArray(0);
 
     glEnable(GL_DEPTH_TEST);
@@ -134,19 +134,20 @@ void init(GLFWwindow* window)
 void draw()
 {
     glClear(GL_DEPTH_BUFFER_BIT);
-    glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), 800.0f / 600, 0.1f, 100.0f);
-    glm::mat4 view = camera.GetViewMatrix();
-    glm::mat4 model;
 
     objShader->use();
     objShader->setVec3("objColor", 1.0f, 0.5f, 0.31f);
     objShader->setVec3("lightColor", 1.0f, 1.0f, 1.0f);
 
+    glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float) SRC_WIDTH / SRC_HEIGHT , 0.1f, 100.0f);
+    glm::mat4 view = camera.GetViewMatrix();
+    glm::mat4 model;
+
     model = glm::mat4(1.0f);
+    //model = glm::rotate(model, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     objShader->setMat4("model", model);
     objShader->setMat4("view", view);
     objShader->setMat4("projection", projection);
-
     glBindVertexArray(objVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
 

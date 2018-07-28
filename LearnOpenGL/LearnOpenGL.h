@@ -15,6 +15,9 @@
 
 #define HELLO_COLORS
 
+#define SRC_WIDTH   800
+#define SRC_HEIGHT  600
+
 extern void init(GLFWwindow* window);
 extern void draw();
 extern void clean();
