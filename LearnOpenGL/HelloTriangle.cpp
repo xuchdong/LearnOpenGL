@@ -28,7 +28,7 @@ const char *fragementShaderSource = "#version 330 core\n"
 unsigned int shaderProgram;
 unsigned int VAO, VBO, EBO;
 
-void init()
+void init(GLFWwindow* window)
 {
     int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);

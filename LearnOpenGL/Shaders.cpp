@@ -32,7 +32,7 @@ const char *vertexShaderSource = "#version 330 core\n"
     "   FragColor = vec4(myColor, 1.0f);\n"
     "}\0";
 
-void init()
+void init(GLFWwindow* window)
 {
     int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);

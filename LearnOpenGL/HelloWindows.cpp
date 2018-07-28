@@ -10,7 +10,7 @@
 #include "LearnOpenGL.h"
 
 #ifdef HELLO_WINDOWS
-void init()
+void init(GLFWwindow* window)
 {
     
 }

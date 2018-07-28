@@ -25,7 +25,7 @@ Shader *shader;
 unsigned int VAO, VBO, EBO;
 unsigned int texture1, texture2;
 
-void init()
+void init(GLFWwindow* window)
 {
     string realPath = basePath + "container.jpg";
     glGenTextures(1, &texture1);

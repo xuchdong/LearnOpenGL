@@ -15,7 +15,7 @@
 Shader *shader;
 unsigned int VAO, VBO;
 
-void init()
+void init(GLFWwindow* window)
 {
     shader = new Shader("shaders.vs", "shaders.fs");
     glGenVertexArrays(1, &VAO);
