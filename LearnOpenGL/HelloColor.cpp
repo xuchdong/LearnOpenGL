@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include "LearnOpenGL.h"
 
-#ifdef HELLO_COLORS
+#ifdef HELLO_COLOR
 #include <string>
 #include <iostream>
 #include "shader_m.h"
