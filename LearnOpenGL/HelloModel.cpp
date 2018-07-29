@@ -13,7 +13,7 @@
 
 #include "shader_m.h"
 #include "model.h"
-#include "Camera.h"
+#include "camera.h"
 
 string basePath = "/Users/xuchdong/xuchdong/LearnOpenGL/src/";
 Shader *ourShader;

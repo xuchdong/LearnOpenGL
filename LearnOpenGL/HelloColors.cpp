@@ -13,7 +13,7 @@
 #include <string>
 #include <iostream>
 #include "shader_m.h"
-#include "Camera.h"
+#include "camera.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>

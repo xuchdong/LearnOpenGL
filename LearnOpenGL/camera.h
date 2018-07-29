@@ -1,13 +1,13 @@
 //
-//  Camera.h
+//  camera.h
 //  LearnOpenGL
 //
 //  Created by xuchdong on 2018/7/25.
 //  Copyright © 2018年 com.xuchdong. All rights reserved.
 //
 
-#ifndef Camera_h
-#define Camera_h
+#ifndef camera_h
+#define camera_h
 
 #include <glad/glad.h>
 #include <glm/glm.hpp>
@@ -147,4 +147,4 @@ private:
     }
 };
 
-#endif /* Camera_h */
+#endif /* camera_h */

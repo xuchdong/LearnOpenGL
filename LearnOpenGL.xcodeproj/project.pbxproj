@@ -80,7 +80,7 @@
 		4100C9C02106DB3900C24683 /* HelloCoord.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloCoord.cpp; sourceTree = "<group>"; };
 		4100C9C42106DBB300C24683 /* hello_coord.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hello_coord.vs; sourceTree = "<group>"; };
 		4100C9C52106DBB300C24683 /* hello_coord.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hello_coord.fs; sourceTree = "<group>"; };
-		4100C9C721080BC700C24683 /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		4100C9C721080BC700C24683 /* camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = camera.h; sourceTree = "<group>"; };
 		4100C9C821087F6A00C24683 /* HelloColors.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloColors.cpp; sourceTree = "<group>"; };
 		4100C9CA21088E9200C24683 /* hello_colors_light.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hello_colors_light.vs; sourceTree = "<group>"; };
 		4100C9CB21088E9200C24683 /* hello_colors_light.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hello_colors_light.fs; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 				4100C9B52104D79B00C24683 /* HelloTexture.cpp */,
 				4100C9BB210627F000C24683 /* HelloTransform.cpp */,
 				4100C9C02106DB3900C24683 /* HelloCoord.cpp */,
-				4100C9C721080BC700C24683 /* Camera.h */,
+				4100C9C721080BC700C24683 /* camera.h */,
 				4100C9C821087F6A00C24683 /* HelloColors.cpp */,
 				4100C9D2210C207300C24683 /* shader_m.h */,
 				4100C9D6210D742600C24683 /* mesh.h */,
