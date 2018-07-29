@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include "LearnOpenGL.h"
 
-#ifdef SHADERS
+#ifdef HELLO_SHADER
 
 unsigned int VAO, VBO;
 unsigned int shaderProgram;

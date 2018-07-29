@@ -18,7 +18,7 @@
 		4100C9952101D5E000C24683 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9942101D5E000C24683 /* glad.c */; };
 		4100C99A2103100C00C24683 /* HelloTriangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9992103100C00C24683 /* HelloTriangle.cpp */; };
 		4100C99C210311CE00C24683 /* HelloWindows.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C99B210311CE00C24683 /* HelloWindows.cpp */; };
-		4100C99E21036DFD00C24683 /* Shaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C99D21036DFD00C24683 /* Shaders.cpp */; };
+		4100C99E21036DFD00C24683 /* HelloShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C99D21036DFD00C24683 /* HelloShader.cpp */; };
 		4100C9A92103829600C24683 /* ShadersEX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9A82103829600C24683 /* ShadersEX.cpp */; };
 		4100C9AE210383BF00C24683 /* shaders.vs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9AD210383BF00C24683 /* shaders.vs */; };
 		4100C9B0210383EE00C24683 /* shaders.fs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9AF210383EE00C24683 /* shaders.fs */; };
@@ -64,7 +64,7 @@
 		4100C99621030F0A00C24683 /* LearnOpenGL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearnOpenGL.h; sourceTree = "<group>"; };
 		4100C9992103100C00C24683 /* HelloTriangle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloTriangle.cpp; sourceTree = "<group>"; };
 		4100C99B210311CE00C24683 /* HelloWindows.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloWindows.cpp; sourceTree = "<group>"; };
-		4100C99D21036DFD00C24683 /* Shaders.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shaders.cpp; sourceTree = "<group>"; };
+		4100C99D21036DFD00C24683 /* HelloShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloShader.cpp; sourceTree = "<group>"; };
 		4100C9A82103829600C24683 /* ShadersEX.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShadersEX.cpp; sourceTree = "<group>"; };
 		4100C9AB210382F600C24683 /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
 		4100C9AD210383BF00C24683 /* shaders.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shaders.vs; sourceTree = "<group>"; };
@@ -206,7 +206,7 @@
 				4100C99621030F0A00C24683 /* LearnOpenGL.h */,
 				4100C9992103100C00C24683 /* HelloTriangle.cpp */,
 				4100C99B210311CE00C24683 /* HelloWindows.cpp */,
-				4100C99D21036DFD00C24683 /* Shaders.cpp */,
+				4100C99D21036DFD00C24683 /* HelloShader.cpp */,
 				4100C9A82103829600C24683 /* ShadersEX.cpp */,
 				4100C9B22104D72600C24683 /* stb_image.cpp */,
 				4100C9B52104D79B00C24683 /* HelloTexture.cpp */,
@@ -298,7 +298,7 @@
 				4100C9C12106DB3900C24683 /* HelloCoord.cpp in Sources */,
 				4100C9D021088F4E00C24683 /* hello_colors_obj.fs in Sources */,
 				4100C9B32104D72600C24683 /* stb_image.cpp in Sources */,
-				4100C99E21036DFD00C24683 /* Shaders.cpp in Sources */,
+				4100C99E21036DFD00C24683 /* HelloShader.cpp in Sources */,
 				4100C99A2103100C00C24683 /* HelloTriangle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
