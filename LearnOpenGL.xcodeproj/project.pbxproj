@@ -34,6 +34,8 @@
 		4100C9CE21088EDB00C24683 /* hello_colors_obj.vs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9CD21088EDB00C24683 /* hello_colors_obj.vs */; };
 		4100C9D021088F4E00C24683 /* hello_colors_obj.fs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9CF21088F4E00C24683 /* hello_colors_obj.fs */; };
 		4100C9D5210D6E9D00C24683 /* libassimp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4100C9D4210D6E9D00C24683 /* libassimp.dylib */; };
+		4100C9D9210DB92300C24683 /* HelloModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9D8210DB92300C24683 /* HelloModel.cpp */; };
+		4100C9DC210DBE0A00C24683 /* hello_model.vs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9DA210DBE0A00C24683 /* hello_model.vs */; };
 		413BA41121016D7B00AF6D95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413BA41021016D7B00AF6D95 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +90,9 @@
 		4100C9D4210D6E9D00C24683 /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.dylib; path = "third-party/assimp/lib/libassimp.dylib"; sourceTree = "<group>"; };
 		4100C9D6210D742600C24683 /* mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mesh.h; sourceTree = "<group>"; };
 		4100C9D7210DA86000C24683 /* model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = model.h; sourceTree = "<group>"; };
+		4100C9D8210DB92300C24683 /* HelloModel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloModel.cpp; sourceTree = "<group>"; };
+		4100C9DA210DBE0A00C24683 /* hello_model.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hello_model.vs; sourceTree = "<group>"; };
+		4100C9DB210DBE0A00C24683 /* hello_model.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hello_model.fs; sourceTree = "<group>"; };
 		413BA40D21016D7B00AF6D95 /* LearnOpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LearnOpenGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		413BA41021016D7B00AF6D95 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +164,8 @@
 				4100C9CB21088E9200C24683 /* hello_colors_light.fs */,
 				4100C9CD21088EDB00C24683 /* hello_colors_obj.vs */,
 				4100C9CF21088F4E00C24683 /* hello_colors_obj.fs */,
+				4100C9DA210DBE0A00C24683 /* hello_model.vs */,
+				4100C9DB210DBE0A00C24683 /* hello_model.fs */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -210,6 +217,7 @@
 				4100C9D2210C207300C24683 /* shader_m.h */,
 				4100C9D6210D742600C24683 /* mesh.h */,
 				4100C9D7210DA86000C24683 /* model.h */,
+				4100C9D8210DB92300C24683 /* HelloModel.cpp */,
 			);
 			path = LearnOpenGL;
 			sourceTree = "<group>";
@@ -271,6 +279,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4100C9DC210DBE0A00C24683 /* hello_model.vs in Sources */,
+				4100C9D9210DB92300C24683 /* HelloModel.cpp in Sources */,
 				4100C9BC210627F000C24683 /* HelloTransform.cpp in Sources */,
 				4100C9BF2106D52B00C24683 /* hello_transform.vs in Sources */,
 				4100C9CE21088EDB00C24683 /* hello_colors_obj.vs in Sources */,
