@@ -10,14 +10,14 @@
 #include "LearnOpenGL.h"
 #include "Shader.h"
 
-#ifdef SHADERSEX
+#ifdef HELLO_SHADEREX
 
 Shader *shader;
 unsigned int VAO, VBO;
 
 void init(GLFWwindow* window)
 {
-    shader = new Shader("shaders.vs", "shaders.fs");
+    shader = new Shader("hello_shaderex.vs", "hello_shaderex.fs");
     glGenVertexArrays(1, &VAO);
     glBindVertexArray(VAO);
 
