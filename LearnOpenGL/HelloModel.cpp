@@ -18,10 +18,45 @@
 string basePath = "/Users/xuchdong/xuchdong/LearnOpenGL/src/";
 Shader *ourShader;
 Model *ourModel;
+
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+float lastX = SRC_WIDTH / 2.0f;
+float lastY = SRC_HEIGHT / 2.0F;
+bool firstMouse = true;
+
+float deltaTime = 0.0f;
+float lastFrame = 0.0f;
+
+void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+    if (firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos;
+
+    lastX = xpos;
+    lastY = ypos;
+
+    camera.ProcessMouseMovement(xoffset, yoffset);
+}
+
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    camera.ProcessMouseScroll(yoffset);
+}
 
 void init(GLFWwindow* window)
 {
+    glfwSetCursorPosCallback(window, mouse_callback);
+    glfwSetScrollCallback(window, scroll_callback);
+
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
     glEnable(GL_DEPTH_TEST);
     ourShader = new Shader("hello_model.vs", "hello_model.fs");
     ourModel = new Model(basePath + "nanosuit/nanosuit.obj");
