@@ -70,13 +70,18 @@ void draw()
     glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)SRC_WIDTH/(float)SRC_HEIGHT, 0.1f, 100.0f);
     //glm::mat4 view = camera.GetViewMatrix();
     float radius = 6.0f;
-    float camX = sin(glfwGetTime()) * radius;
-    float camZ = cos(glfwGetTime()) * radius;
+    float camX = sin(0) * radius;
+    float camZ = cos(0) * radius;
     glm::mat4 view;
     view = glm::lookAt(glm::vec3(camX, 0.0, camZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
     ourShader->setMat4("projection", projection);
     ourShader->setMat4("view", view);
-    
+
+    ourShader->setVec3("light.direction", -2.0f, -2.0f, -2.0f);
+    ourShader->setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
+    ourShader->setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);;
+    ourShader->setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
     model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
