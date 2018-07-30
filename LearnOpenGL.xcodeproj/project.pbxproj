@@ -36,6 +36,8 @@
 		4100C9D5210D6E9D00C24683 /* libassimp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4100C9D4210D6E9D00C24683 /* libassimp.dylib */; };
 		4100C9D9210DB92300C24683 /* HelloModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9D8210DB92300C24683 /* HelloModel.cpp */; };
 		4100C9DC210DBE0A00C24683 /* hello_model.vs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9DA210DBE0A00C24683 /* hello_model.vs */; };
+		4100C9DE210F564400C24683 /* HelloDepthTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9DD210F564400C24683 /* HelloDepthTest.cpp */; };
+		4100C9E1210F5BF800C24683 /* hello_depth_test.vs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9DF210F5BF800C24683 /* hello_depth_test.vs */; };
 		413BA41121016D7B00AF6D95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413BA41021016D7B00AF6D95 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +95,9 @@
 		4100C9D8210DB92300C24683 /* HelloModel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloModel.cpp; sourceTree = "<group>"; };
 		4100C9DA210DBE0A00C24683 /* hello_model.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hello_model.vs; sourceTree = "<group>"; };
 		4100C9DB210DBE0A00C24683 /* hello_model.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hello_model.fs; sourceTree = "<group>"; };
+		4100C9DD210F564400C24683 /* HelloDepthTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloDepthTest.cpp; sourceTree = "<group>"; };
+		4100C9DF210F5BF800C24683 /* hello_depth_test.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hello_depth_test.vs; sourceTree = "<group>"; };
+		4100C9E0210F5BF800C24683 /* hello_depth_test.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hello_depth_test.fs; sourceTree = "<group>"; };
 		413BA40D21016D7B00AF6D95 /* LearnOpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LearnOpenGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		413BA41021016D7B00AF6D95 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +171,8 @@
 				4100C9CF21088F4E00C24683 /* hello_colors_obj.fs */,
 				4100C9DA210DBE0A00C24683 /* hello_model.vs */,
 				4100C9DB210DBE0A00C24683 /* hello_model.fs */,
+				4100C9DF210F5BF800C24683 /* hello_depth_test.vs */,
+				4100C9E0210F5BF800C24683 /* hello_depth_test.fs */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -218,6 +225,7 @@
 				4100C9D6210D742600C24683 /* mesh.h */,
 				4100C9D7210DA86000C24683 /* model.h */,
 				4100C9D8210DB92300C24683 /* HelloModel.cpp */,
+				4100C9DD210F564400C24683 /* HelloDepthTest.cpp */,
 			);
 			path = LearnOpenGL;
 			sourceTree = "<group>";
@@ -285,6 +293,7 @@
 				4100C9BF2106D52B00C24683 /* hello_transform.vs in Sources */,
 				4100C9CE21088EDB00C24683 /* hello_colors_obj.vs in Sources */,
 				4100C9C921087F6A00C24683 /* HelloColor.cpp in Sources */,
+				4100C9DE210F564400C24683 /* HelloDepthTest.cpp in Sources */,
 				4100C99C210311CE00C24683 /* HelloWindows.cpp in Sources */,
 				4100C9B0210383EE00C24683 /* hello_shaderex.fs in Sources */,
 				4100C9B92104DB8100C24683 /* hello_texture.fs in Sources */,
@@ -293,6 +302,7 @@
 				4100C9A92103829600C24683 /* HelloShaderEX.cpp in Sources */,
 				4100C9AE210383BF00C24683 /* hello_shaderex.vs in Sources */,
 				4100C9C62106DBB300C24683 /* hello_coord.vs in Sources */,
+				4100C9E1210F5BF800C24683 /* hello_depth_test.vs in Sources */,
 				4100C9B62104D79B00C24683 /* HelloTexture.cpp in Sources */,
 				4100C9CC21088E9200C24683 /* hello_colors_light.vs in Sources */,
 				4100C9C12106DB3900C24683 /* HelloCoord.cpp in Sources */,
