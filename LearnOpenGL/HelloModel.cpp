@@ -68,7 +68,12 @@ void draw()
     ourShader->use();
 
     glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)SRC_WIDTH/(float)SRC_HEIGHT, 0.1f, 100.0f);
-    glm::mat4 view = camera.GetViewMatrix();
+    //glm::mat4 view = camera.GetViewMatrix();
+    float radius = 6.0f;
+    float camX = sin(glfwGetTime()) * radius;
+    float camZ = cos(glfwGetTime()) * radius;
+    glm::mat4 view;
+    view = glm::lookAt(glm::vec3(camX, 0.0, camZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
     ourShader->setMat4("projection", projection);
     ourShader->setMat4("view", view);
     
