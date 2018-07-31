@@ -31,6 +31,33 @@ unsigned int cubeTexture, planeTexture;
 Shader *myShader;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+float lastX = (float)SRC_WIDTH / 2.0;
+float lastY = (float)SRC_HEIGHT / 2.0;
+bool firstMouse = true;
+
+float deltaTime = 0.0f;
+float lastFrame = 0.0f;
+
+void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+    if(firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos;
+
+    lastX = xpos;
+    lastY = ypos;
+    camera.ProcessMouseMovement(xoffset, yoffset);
+}
+
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    camera.ProcessMouseScroll(yoffset);
+}
 
 unsigned int loadTexture(char const *path)
 {
@@ -70,6 +97,9 @@ unsigned int loadTexture(char const *path)
 
 void init(GLFWwindow* window)
 {
+    glfwSetCursorPosCallback(window, mouse_callback);
+    glfwSetScrollCallback(window, scroll_callback);
+
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_ALWAYS);
 
