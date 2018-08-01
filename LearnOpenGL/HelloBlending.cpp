@@ -33,6 +33,9 @@ unsigned int cubeTexture, planeTexture, transparentTexture;
 Shader *myShader;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 6.0f));
+float lastX = (float)SRC_WIDTH / 2.0;
+float lastY = (float)SRC_HEIGHT / 2.0;
+bool firstMouse = true;
 
 vector<glm::vec3> windows
 {
@@ -42,6 +45,29 @@ vector<glm::vec3> windows
     glm::vec3(-0.3f, 0.0f, -2.3f),
     glm::vec3( 0.5f, 0.0f, -0.6f)
 };
+
+void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+    if (firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos;
+
+    lastX = xpos;
+    lastY = ypos;
+
+    camera.ProcessMouseMovement(xoffset, yoffset);
+}
+
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    camera.ProcessMouseScroll(yoffset);
+}
 
 unsigned int loadTexture(char const *path)
 {
@@ -81,6 +107,9 @@ unsigned int loadTexture(char const *path)
 
 void init(GLFWwindow* window)
 {
+    glfwSetCursorPosCallback(window, mouse_callback);
+    glfwSetScrollCallback(window, scroll_callback);
+
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glEnable(GL_BLEND);
@@ -209,8 +238,9 @@ void draw()
     myShader->use();
     glm::mat4 model = glm::mat4(1.0f);
 
-    //glm::mat4 view = glm::mat4(1.0f);
-    //view = glm::translate(view, glm::vec3(0.0, 0.0, 3.0f));
+//    glm::mat4 view = glm::mat4(1.0f);
+//    view = glm::translate(view, glm::vec3(0.0, 0.0, 6.0f));
+//    view = glm::rotate(view, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     glm::mat4 view = camera.GetViewMatrix();
     glm::mat4 projection = glm::perspective(glm::radians(60.0f), (float) SRC_WIDTH / (float) SRC_HEIGHT, 0.1f, 100.0f);
     myShader->setMat4("model", model);
