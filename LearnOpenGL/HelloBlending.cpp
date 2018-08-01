@@ -238,11 +238,8 @@ void draw()
     myShader->use();
     glm::mat4 model = glm::mat4(1.0f);
 
-//    glm::mat4 view = glm::mat4(1.0f);
-//    view = glm::translate(view, glm::vec3(0.0, 0.0, 6.0f));
-//    view = glm::rotate(view, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     glm::mat4 view = camera.GetViewMatrix();
-    glm::mat4 projection = glm::perspective(glm::radians(60.0f), (float) SRC_WIDTH / (float) SRC_HEIGHT, 0.1f, 100.0f);
+    glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float) SRC_WIDTH / (float) SRC_HEIGHT, 0.1f, 100.0f);
     myShader->setMat4("model", model);
     myShader->setMat4("view", view);
     myShader->setMat4("projection", projection);
