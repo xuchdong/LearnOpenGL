@@ -42,6 +42,7 @@
 		4100C9E5211341DA00C24683 /* HelloCubemaps.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9E4211341DA00C24683 /* HelloCubemaps.cpp */; };
 		4100C9E821134D8400C24683 /* skybox.vs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9E621134D8400C24683 /* skybox.vs */; };
 		413BA41121016D7B00AF6D95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413BA41021016D7B00AF6D95 /* main.cpp */; };
+		41D9518D2114491500B1AF94 /* cube.vs in Sources */ = {isa = PBXBuildFile; fileRef = 41D9518B2114491500B1AF94 /* cube.vs */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -107,6 +108,8 @@
 		4100C9E721134D8400C24683 /* skybox.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = skybox.fs; sourceTree = "<group>"; };
 		413BA40D21016D7B00AF6D95 /* LearnOpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LearnOpenGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		413BA41021016D7B00AF6D95 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		41D9518B2114491500B1AF94 /* cube.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cube.vs; sourceTree = "<group>"; };
+		41D9518C2114491500B1AF94 /* cube.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cube.fs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +185,8 @@
 				4100C9E0210F5BF800C24683 /* hello_depth_test.fs */,
 				4100C9E621134D8400C24683 /* skybox.vs */,
 				4100C9E721134D8400C24683 /* skybox.fs */,
+				41D9518B2114491500B1AF94 /* cube.vs */,
+				41D9518C2114491500B1AF94 /* cube.fs */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 			files = (
 				4100C9DC210DBE0A00C24683 /* hello_model.vs in Sources */,
 				4100C9D9210DB92300C24683 /* HelloModel.cpp in Sources */,
+				41D9518D2114491500B1AF94 /* cube.vs in Sources */,
 				4100C9BC210627F000C24683 /* HelloTransform.cpp in Sources */,
 				4100C9BF2106D52B00C24683 /* hello_transform.vs in Sources */,
 				4100C9CE21088EDB00C24683 /* hello_colors_obj.vs in Sources */,
