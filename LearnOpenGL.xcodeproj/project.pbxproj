@@ -43,6 +43,7 @@
 		4100C9E821134D8400C24683 /* skybox.vs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9E621134D8400C24683 /* skybox.vs */; };
 		413BA41121016D7B00AF6D95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413BA41021016D7B00AF6D95 /* main.cpp */; };
 		41D9518D2114491500B1AF94 /* cube.vs in Sources */ = {isa = PBXBuildFile; fileRef = 41D9518B2114491500B1AF94 /* cube.vs */; };
+		41D951942118957B00B1AF94 /* HelloShadowMapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D951932118957B00B1AF94 /* HelloShadowMapping.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -110,6 +111,7 @@
 		413BA41021016D7B00AF6D95 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		41D9518B2114491500B1AF94 /* cube.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cube.vs; sourceTree = "<group>"; };
 		41D9518C2114491500B1AF94 /* cube.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cube.fs; sourceTree = "<group>"; };
+		41D951932118957B00B1AF94 /* HelloShadowMapping.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloShadowMapping.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +244,7 @@
 				4100C9DD210F564400C24683 /* HelloDepthTest.cpp */,
 				4100C9E22110AD6D00C24683 /* HelloBlending.cpp */,
 				4100C9E4211341DA00C24683 /* HelloCubemaps.cpp */,
+				41D951932118957B00B1AF94 /* HelloShadowMapping.cpp */,
 			);
 			path = LearnOpenGL;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				4100C9C12106DB3900C24683 /* HelloCoord.cpp in Sources */,
 				4100C9D021088F4E00C24683 /* hello_colors_obj.fs in Sources */,
 				4100C9B32104D72600C24683 /* stb_image.cpp in Sources */,
+				41D951942118957B00B1AF94 /* HelloShadowMapping.cpp in Sources */,
 				4100C99E21036DFD00C24683 /* HelloShader.cpp in Sources */,
 				4100C99A2103100C00C24683 /* HelloTriangle.cpp in Sources */,
 			);
