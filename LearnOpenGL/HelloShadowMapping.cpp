@@ -15,6 +15,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "shader_m.h"
+
+void renderScene(const Shader &shader);
 void renderCube();
 void renderQuad();
 
@@ -66,6 +69,31 @@ void draw()
 void clean()
 {
     
+}
+
+void renderScene(const Shader &shader)
+{
+    glm::mat4 model = glm::mat4(1.0f);
+    shader.setMat4("model", model);
+    glBindVertexArray(planeVAO);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+
+    model = glm::mat4(1.0f);
+    model = glm::translate(model, glm::vec3(0.0f, 1.5f, 0.0f));
+    model = glm::scale(model, glm::vec3(0.5f));
+    shader.setMat4("model", model);
+    renderCube();
+    model = glm::mat4(1.0f);
+    model = glm::translate(model, glm::vec3(2.0f, 0.0f, 1.0f));
+    model = glm::scale(model, glm::vec3(0.5f));
+    shader.setMat4("model", model);
+    renderCube();
+    model = glm::mat4(1.0f);
+    model = glm::translate(model, glm::vec3(-1.0f, 0.0f, 2.0f));
+    model = glm::rotate(model, glm::radians(60.0f), glm::normalize(glm::vec3(1.0f, 0.0f, 1.0f)));
+    model = glm::scale(model, glm::vec3(0.25f));
+    shader.setMat4("model", model);
+    renderCube();
 }
 
 unsigned int cubeVAO = 0;
