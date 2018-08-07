@@ -23,13 +23,20 @@
 using namespace std;
 
 GLuint loadTexture(const char* path);
-void renderScene(const Shader &shader);
+void renderScene(const Shader* shader);
 void renderCube();
 void renderQuad();
 
 string srcBasepath = "/Users/xuchdong/xuchdong/LearnOpenGL/src/";
+glm::vec3 lightPos(-2.0f, 4.0f, -1.0f);
+const GLuint SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
 
 unsigned int planeVAO, planeVBO;
+GLuint woodTexture;
+GLuint depthMapFBO, depthMap;
+
+Shader* simpleDepthShader;
+Shader* debugDepthQuad;
 
 void init(GLFWwindow* window)
 {
@@ -57,11 +64,34 @@ void init(GLFWwindow* window)
     glEnableVertexAttribArray(2);
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(0 + 6 * sizeof(float)));
     glBindVertexArray(0);
+
+    woodTexture = loadTexture((srcBasepath + "wood.png").c_str());
+
+    glGenFramebuffers(1, &depthMapFBO);
+
+    glGenTextures(1, &depthMap);
+    glBindTexture(GL_TEXTURE_2D, depthMap);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
+    glDrawBuffer(GL_NONE);
+    glReadBuffer(GL_NONE);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+    simpleDepthShader = new Shader("shadow_mapping_depth.vs", "shadow_mapping_depth.fs");
+    debugDepthQuad = new Shader("debug_quad.vs", "debug_quad.fs");
+
+    debugDepthQuad->use();
+    debugDepthQuad->setInt("depthMap", 0);
 }
 
 void draw()
 {
-    /*
     glClear(GL_DEPTH_BUFFER_BIT);
 
     glm::vec3 lightPos(-2.0f, 4.0f, -1.0f);
@@ -71,12 +101,34 @@ void draw()
     lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
     lightView = glm::lookAt(lightPos, glm::vec3(0.0f), glm::vec3(0.0, 1.0, 0.0));
     lightSpaceMatrix = lightProjection * lightView;
-    */
+
+    simpleDepthShader->use();
+    simpleDepthShader->setMat4("lightSpaceMatrix", lightSpaceMatrix);
+
+    glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
+    glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+        glClear(GL_DEPTH_BUFFER_BIT);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, woodTexture);
+        renderScene(simpleDepthShader);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+    glViewport(0, 0, SRC_WIDTH, SRC_HEIGHT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    debugDepthQuad->use();
+    debugDepthQuad->setFloat("near_plane", near_plane);
+    debugDepthQuad->setFloat("far_plane", far_plane);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, depthMap);
+    renderQuad();
 }
 
 void clean()
 {
-    
+    glDeleteVertexArrays(1, &planeVAO);
+    glDeleteBuffers(1, &planeVBO);
+    glDeleteFramebuffers(1, &depthMapFBO);
 }
 
 GLuint loadTexture(const char* path)
@@ -119,28 +171,28 @@ GLuint loadTexture(const char* path)
     return textureID;
 }
 
-void renderScene(const Shader &shader)
+void renderScene(const Shader* shader)
 {
     glm::mat4 model = glm::mat4(1.0f);
-    shader.setMat4("model", model);
+    shader->setMat4("model", model);
     glBindVertexArray(planeVAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);
 
     model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(0.0f, 1.5f, 0.0f));
     model = glm::scale(model, glm::vec3(0.5f));
-    shader.setMat4("model", model);
+    shader->setMat4("model", model);
     renderCube();
     model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(2.0f, 0.0f, 1.0f));
     model = glm::scale(model, glm::vec3(0.5f));
-    shader.setMat4("model", model);
+    shader->setMat4("model", model);
     renderCube();
     model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(-1.0f, 0.0f, 2.0f));
     model = glm::rotate(model, glm::radians(60.0f), glm::normalize(glm::vec3(1.0f, 0.0f, 1.0f)));
     model = glm::scale(model, glm::vec3(0.25f));
-    shader.setMat4("model", model);
+    shader->setMat4("model", model);
     renderCube();
 }
 
