@@ -44,6 +44,7 @@
 		413BA41121016D7B00AF6D95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413BA41021016D7B00AF6D95 /* main.cpp */; };
 		41D9518D2114491500B1AF94 /* cube.vs in Sources */ = {isa = PBXBuildFile; fileRef = 41D9518B2114491500B1AF94 /* cube.vs */; };
 		41D951942118957B00B1AF94 /* HelloShadowMapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D951932118957B00B1AF94 /* HelloShadowMapping.cpp */; };
+		41D95196211B401800B1AF94 /* HelloFrameBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D95195211B401800B1AF94 /* HelloFrameBuffer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -112,6 +113,7 @@
 		41D9518B2114491500B1AF94 /* cube.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cube.vs; sourceTree = "<group>"; };
 		41D9518C2114491500B1AF94 /* cube.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cube.fs; sourceTree = "<group>"; };
 		41D951932118957B00B1AF94 /* HelloShadowMapping.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloShadowMapping.cpp; sourceTree = "<group>"; };
+		41D95195211B401800B1AF94 /* HelloFrameBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloFrameBuffer.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 				4100C9E22110AD6D00C24683 /* HelloBlending.cpp */,
 				4100C9E4211341DA00C24683 /* HelloCubemaps.cpp */,
 				41D951932118957B00B1AF94 /* HelloShadowMapping.cpp */,
+				41D95195211B401800B1AF94 /* HelloFrameBuffer.cpp */,
 			);
 			path = LearnOpenGL;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				4100C9C62106DBB300C24683 /* hello_coord.vs in Sources */,
 				4100C9E1210F5BF800C24683 /* hello_depth_test.vs in Sources */,
 				4100C9B62104D79B00C24683 /* HelloTexture.cpp in Sources */,
+				41D95196211B401800B1AF94 /* HelloFrameBuffer.cpp in Sources */,
 				4100C9E32110AD6D00C24683 /* HelloBlending.cpp in Sources */,
 				4100C9CC21088E9200C24683 /* hello_colors_light.vs in Sources */,
 				4100C9C12106DB3900C24683 /* HelloCoord.cpp in Sources */,
