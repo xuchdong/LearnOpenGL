@@ -16,15 +16,18 @@
 #include <string>
 
 #include "stb_image.h"
+#include "shader_m.h"
 
 using namespace std;
 
-string srcBasepath = "/Users/xuchdong/xuchdong/LearnOpenGL/LearnOpenGL/src/";
+string srcBasepath = "/Users/xuchdong/xuchdong/LearnOpenGL/src/";
 
 unsigned int cubeVAO, cubeVBO;
 unsigned int planVAO, planVBO;
 unsigned int quadVAO, quadVBO;
 unsigned int cubeTexture, floorTexture;
+Shader *shader;
+Shader *screenShader;
 
 unsigned int loadTexture(const char* path)
 {
@@ -168,6 +171,15 @@ void init(GLFWwindow* window)
 
     cubeTexture = loadTexture((srcBasepath + "marble.jpg").c_str());
     floorTexture = loadTexture((srcBasepath + "metal.png").c_str());
+
+    shader = new Shader("framebuffers.vs", "framebuffers.fs");
+    screenShader = new Shader("framebuffers_screen.vs", "framebuffers_screen.fs");
+
+    shader->use();
+    shader->setInt("texture1", 0);
+
+    screenShader->use();
+    screenShader->setInt("screenTexture", 0);
 }
 
 void draw()
