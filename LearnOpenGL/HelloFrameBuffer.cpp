@@ -177,7 +177,7 @@ void init(GLFWwindow* window)
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void *)(2 * sizeof(float)));
     glBindVertexArray(0);
 
-    cubeTexture = loadTexture((srcBasepath + "marble.jpg").c_str());
+    cubeTexture = loadTexture((srcBasepath + "container.jpg").c_str());
     floorTexture = loadTexture((srcBasepath + "metal.png").c_str());
 
     shader = new Shader("framebuffers.vs", "framebuffers.fs");
