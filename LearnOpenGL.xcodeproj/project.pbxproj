@@ -116,6 +116,7 @@
 		41D951932118957B00B1AF94 /* HelloShadowMapping.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloShadowMapping.cpp; sourceTree = "<group>"; };
 		41D95195211B401800B1AF94 /* HelloFrameBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloFrameBuffer.cpp; sourceTree = "<group>"; };
 		41D95197211DDFBD00B1AF94 /* HelloHDR.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloHDR.cpp; sourceTree = "<group>"; };
+		41D9519A211DE13300B1AF94 /* utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +252,7 @@
 				41D951932118957B00B1AF94 /* HelloShadowMapping.cpp */,
 				41D95195211B401800B1AF94 /* HelloFrameBuffer.cpp */,
 				41D95197211DDFBD00B1AF94 /* HelloHDR.cpp */,
+				41D9519A211DE13300B1AF94 /* utils.hpp */,
 			);
 			path = LearnOpenGL;
 			sourceTree = "<group>";
