@@ -19,15 +19,26 @@
 #include "camera.h"
 #include "utils.hpp"
 
+void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+void process_input(GLFWwindow *window);
+
 void renderCube();
 void renderQuad();
 
 using namespace std;
+GLFWwindow* mainWin;
 
 bool hdr = true;
+bool hdrKeyPressed = false;
 float exposure = 1.0f;
 string srcBasepath = "/Users/xuchdong/xuchdong/LearnOpenGL/src/";
 Camera camera(glm::vec3(0.0f, 0.0f, 5.0f));
+float lastX = (float)SRC_WIDTH / 2.0;
+float lastY = (float)SRC_HEIGHT / 2.0;
+bool firstMouse = true;
+float deltaTime = 0.0f;
+float lastFrame = 0.0f;
 
 Shader *shader;
 Shader *hdrShader;
@@ -40,6 +51,12 @@ unsigned int hdrFBO, colorBuffer, rboDepth;
 
 void init(GLFWwindow* window)
 {
+    mainWin = window;
+    glfwSetCursorPosCallback(window, mouse_callback);
+    glfwSetScrollCallback(window, scroll_callback);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+
     glEnable(GL_DEPTH_TEST);
     shader = new Shader("lighting.vs", "lighting.fs");
     hdrShader = new Shader("hdr.vs", "hdr.fs");
@@ -86,6 +103,11 @@ void init(GLFWwindow* window)
 
 void draw()
 {
+    float currentFrame = glfwGetTime();
+    deltaTime = currentFrame - lastFrame;
+    lastFrame = currentFrame;
+
+    process_input(mainWin);
     glBindFramebuffer(GL_FRAMEBUFFER, hdrFBO);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (GLfloat)SRC_WIDTH / (GLfloat)SRC_HEIGHT, 0.1f, 100.0f);
@@ -103,7 +125,7 @@ void draw()
         shader->setVec3("viewPos", camera.Position);
         glm::mat4 model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, 25.0f));
-        model = glm::scale(model, glm::vec3(2.5f, 2.5f, 27.5f));
+        model = glm::scale(model, glm::vec3(2.5f, 2.5f, 30.0f));
         shader->setMat4("model", model);
         shader->setBool("inverse_normals", true);
         renderCube();
@@ -219,6 +241,63 @@ void renderQuad()
     glBindVertexArray(quadVAO);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     glBindVertexArray(0);
+}
+
+void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+    if (firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+
+    lastX = xpos;
+    lastY = ypos;
+
+    camera.ProcessMouseMovement(xoffset, yoffset);
+}
+
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    camera.ProcessMouseScroll(yoffset);
+}
+
+void process_input(GLFWwindow *window)
+{
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+        camera.ProcessKeyboard(FORWARD, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+        camera.ProcessKeyboard(BACKWARD, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+        camera.ProcessKeyboard(LEFT, deltaTime);
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+        camera.ProcessKeyboard(RIGHT, deltaTime);
+
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS && !hdrKeyPressed)
+    {
+        hdr = !hdr;
+        hdrKeyPressed = true;
+    }
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_RELEASE)
+    {
+        hdrKeyPressed = false;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
+    {
+        if (exposure > 0.0f)
+            exposure -= 0.001f;
+        else
+            exposure = 0.0f;
+    }
+    else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
+    {
+        exposure += 0.001f;
+    }
 }
 #endif
 
