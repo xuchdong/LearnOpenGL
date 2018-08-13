@@ -46,6 +46,7 @@
 		41D951942118957B00B1AF94 /* HelloShadowMapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D951932118957B00B1AF94 /* HelloShadowMapping.cpp */; };
 		41D95196211B401800B1AF94 /* HelloFrameBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D95195211B401800B1AF94 /* HelloFrameBuffer.cpp */; };
 		41D95198211DDFBD00B1AF94 /* HelloHDR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D95197211DDFBD00B1AF94 /* HelloHDR.cpp */; };
+		41D9519D21210DB100B1AF94 /* HelloBloom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D9519C21210DB100B1AF94 /* HelloBloom.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -117,6 +118,7 @@
 		41D95195211B401800B1AF94 /* HelloFrameBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloFrameBuffer.cpp; sourceTree = "<group>"; };
 		41D95197211DDFBD00B1AF94 /* HelloHDR.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloHDR.cpp; sourceTree = "<group>"; };
 		41D9519A211DE13300B1AF94 /* utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
+		41D9519C21210DB100B1AF94 /* HelloBloom.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloBloom.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 				41D95195211B401800B1AF94 /* HelloFrameBuffer.cpp */,
 				41D95197211DDFBD00B1AF94 /* HelloHDR.cpp */,
 				41D9519A211DE13300B1AF94 /* utils.hpp */,
+				41D9519C21210DB100B1AF94 /* HelloBloom.cpp */,
 			);
 			path = LearnOpenGL;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				4100C9E821134D8400C24683 /* skybox.vs in Sources */,
 				413BA41121016D7B00AF6D95 /* main.cpp in Sources */,
 				4100C9952101D5E000C24683 /* glad.c in Sources */,
+				41D9519D21210DB100B1AF94 /* HelloBloom.cpp in Sources */,
 				4100C9A92103829600C24683 /* HelloShaderEX.cpp in Sources */,
 				4100C9AE210383BF00C24683 /* hello_shaderex.vs in Sources */,
 				4100C9C62106DBB300C24683 /* hello_coord.vs in Sources */,
