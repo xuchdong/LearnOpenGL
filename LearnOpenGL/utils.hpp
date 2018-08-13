@@ -20,6 +20,8 @@
 
 using namespace std;
 
+string srcBasepath = "/Users/xuchdong/xuchdong/LearnOpenGL/src/";
+
 unsigned int loadTexture(const char* path)
 {
     unsigned int textureID;
@@ -103,5 +105,16 @@ unsigned int loadTexture(char const * path, bool gammaCorrection)
     stbi_image_free(data);
 
     return textureID;
+}
+
+
+unsigned int loadTexture(string filename)
+{
+    return loadTexture((srcBasepath + filename).c_str());
+}
+
+unsigned int loadTexture(string filename, bool gammaCorrection)
+{
+    return loadTexture((srcBasepath + filename).c_str(), gammaCorrection);
 }
 #endif /* utils_hpp */
