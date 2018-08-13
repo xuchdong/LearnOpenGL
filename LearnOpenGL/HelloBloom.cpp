@@ -11,8 +11,12 @@
 
 #ifdef HELLO_BLOOM
 
+#include <vector>
+
 #include "shader_m.h"
 #include "utils.hpp"
+
+using namespace std;
 
 Shader *shader, *shaderLight, *shaderBlur, *shaderBloomFinal;
 unsigned int woodTexture, containerTexture;
@@ -23,6 +27,9 @@ unsigned int rboDepth;
 
 unsigned int pingpongFBO[2];
 unsigned int pingpongColorbuffers[2];
+
+vector<glm::vec3> lightPositions;
+vector<glm::vec3> lightColors;
 
 void init(GLFWwindow* window)
 {
@@ -82,6 +89,24 @@ void init(GLFWwindow* window)
             cout << "Framebuffer not complete!" << endl;
         }
     }
+
+    lightPositions.push_back(glm::vec3(0.0f, 0.5f, 1.5f));
+    lightPositions.push_back(glm::vec3(-4.0f, 0.5f, -3.0f));
+    lightPositions.push_back(glm::vec3(3.0f, 0.5f, 1.0f));
+    lightPositions.push_back(glm::vec3(-0.8f, 2.4f, -1.0f));
+
+    lightColors.push_back(glm::vec3(2.0f, 2.0f, 2.0f));
+    lightColors.push_back(glm::vec3(1.5f, 0.0f, 0.0f));
+    lightColors.push_back(glm::vec3(0.0f, 0.0f, 1.5f));
+    lightColors.push_back(glm::vec3(0.0f, 1.5f, 0.0f));
+
+    shader->use();
+    shader->setInt("diffuseTexture", 0);
+    shaderBlur->use();
+    shaderBlur->setInt("image", 0);
+    shaderBloomFinal->use();
+    shaderBloomFinal->setInt("scene", 0);
+    shaderBloomFinal->setInt("bloomBlur", 1);
 }
 
 void draw()
