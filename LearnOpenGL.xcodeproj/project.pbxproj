@@ -47,6 +47,7 @@
 		41D95196211B401800B1AF94 /* HelloFrameBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D95195211B401800B1AF94 /* HelloFrameBuffer.cpp */; };
 		41D95198211DDFBD00B1AF94 /* HelloHDR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D95197211DDFBD00B1AF94 /* HelloHDR.cpp */; };
 		41D9519D21210DB100B1AF94 /* HelloBloom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D9519C21210DB100B1AF94 /* HelloBloom.cpp */; };
+		41D951B121232ED300B1AF94 /* HelloDeferredShading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D951B021232ED300B1AF94 /* HelloDeferredShading.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -119,6 +120,7 @@
 		41D95197211DDFBD00B1AF94 /* HelloHDR.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloHDR.cpp; sourceTree = "<group>"; };
 		41D9519A211DE13300B1AF94 /* utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
 		41D9519C21210DB100B1AF94 /* HelloBloom.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloBloom.cpp; sourceTree = "<group>"; };
+		41D951B021232ED300B1AF94 /* HelloDeferredShading.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloDeferredShading.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +258,7 @@
 				41D95197211DDFBD00B1AF94 /* HelloHDR.cpp */,
 				41D9519A211DE13300B1AF94 /* utils.hpp */,
 				41D9519C21210DB100B1AF94 /* HelloBloom.cpp */,
+				41D951B021232ED300B1AF94 /* HelloDeferredShading.cpp */,
 			);
 			path = LearnOpenGL;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				4100C9C12106DB3900C24683 /* HelloCoord.cpp in Sources */,
 				4100C9D021088F4E00C24683 /* hello_colors_obj.fs in Sources */,
 				4100C9B32104D72600C24683 /* stb_image.cpp in Sources */,
+				41D951B121232ED300B1AF94 /* HelloDeferredShading.cpp in Sources */,
 				41D951942118957B00B1AF94 /* HelloShadowMapping.cpp in Sources */,
 				4100C99E21036DFD00C24683 /* HelloShader.cpp in Sources */,
 				4100C99A2103100C00C24683 /* HelloTriangle.cpp in Sources */,
