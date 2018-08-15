@@ -11,8 +11,16 @@
 
 #ifdef HELLO_DEFERREDSHADING
 
+#include "utils.hpp"
+#include "shader_m.h"
+
+Shader *shaderGeometryPass;
+
 void init(GLFWwindow* window)
 {
+    glEnable(GL_DEPTH_TEST);
+
+    shaderGeometryPass = new Shader("g_buffer.vs", "g_buffer.fs");
 }
 
 
