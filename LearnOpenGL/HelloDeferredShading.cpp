@@ -12,6 +12,7 @@
 #ifdef HELLO_DEFERREDSHADING
 
 #include <string>
+#include <vector>
 
 #include "utils.hpp"
 #include "shader_m.h"
@@ -21,6 +22,7 @@ using namespace std;
 
 Shader *shaderGeometryPass, *shaderLightingPass, *shaderLightBox;
 Model *cyborg;
+vector<glm::vec3> objectPositions;
 
 void init(GLFWwindow* window)
 {
@@ -36,6 +38,17 @@ void init(GLFWwindow* window)
     shaderLightingPass->setInt("gAlbedoSpec", 2);
 
     cyborg = new Model(srcBasepath + "nanosuit/nanosuit.obj");
+
+    objectPositions.push_back(glm::vec3(-3.0, -3.0, -3.0));
+    objectPositions.push_back(glm::vec3(0.0, -3.0, -3.0));
+    objectPositions.push_back(glm::vec3(3.0, -3.0, -3.0));
+    objectPositions.push_back(glm::vec3(-3.0, -3.0, 0.0));
+    objectPositions.push_back(glm::vec3(0.0, -3.0, 0.0));
+    objectPositions.push_back(glm::vec3(3.0, -3.0, 0.0));
+    objectPositions.push_back(glm::vec3(-3.0, -3.0, 3.0));
+    objectPositions.push_back(glm::vec3(0.0, -3.0, 3.0));
+    objectPositions.push_back(glm::vec3(3.0, -3.0, 3.0));
+
 }
 
 
