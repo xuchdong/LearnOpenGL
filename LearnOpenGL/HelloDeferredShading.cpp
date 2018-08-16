@@ -11,10 +11,16 @@
 
 #ifdef HELLO_DEFERREDSHADING
 
+#include <string>
+
 #include "utils.hpp"
 #include "shader_m.h"
+#include "model.h"
+
+using namespace std;
 
 Shader *shaderGeometryPass, *shaderLightingPass, *shaderLightBox;
+Model *cyborg;
 
 void init(GLFWwindow* window)
 {
@@ -23,6 +29,13 @@ void init(GLFWwindow* window)
     shaderGeometryPass = new Shader("g_buffer.vs", "g_buffer.fs");
     shaderLightingPass = new Shader("deferred_shading.vs", "deferred_shading.fs");
     shaderLightBox = new Shader("deferred_light_box.vs", "deferred_light_box.fs");
+
+    shaderLightingPass->use();
+    shaderLightingPass->setInt("gPosition", 0);
+    shaderLightingPass->setInt("gNormal", 1);
+    shaderLightingPass->setInt("gAlbedoSpec", 2);
+
+    cyborg = new Model(srcBasepath + "nanosuit/nanosuit.obj");
 }
 
 
