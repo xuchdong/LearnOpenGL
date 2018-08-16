@@ -21,8 +21,12 @@
 using namespace std;
 
 Shader *shaderGeometryPass, *shaderLightingPass, *shaderLightBox;
+
 Model *cyborg;
 vector<glm::vec3> objectPositions;
+
+vector<glm::vec3> lightPositions;
+vector<glm::vec3> lightColors;
 
 void init(GLFWwindow* window)
 {
@@ -48,6 +52,21 @@ void init(GLFWwindow* window)
     objectPositions.push_back(glm::vec3(-3.0, -3.0, 3.0));
     objectPositions.push_back(glm::vec3(0.0, -3.0, 3.0));
     objectPositions.push_back(glm::vec3(3.0, -3.0, 3.0));
+
+    unsigned int NR_LIGHTS = 32;
+    srand(13);
+    for(unsigned int i = 0; i < NR_LIGHTS; i++)
+    {
+        float xPos = ((rand() % 100) / 100.0) * 6.0 - 3.0;
+        float yPos = ((rand() % 100) / 100.0) * 6.0 - 4.0;
+        float zPos = ((rand() % 100) / 100.0) * 6.0 - 3.0;
+        lightPositions.push_back(glm::vec3(xPos, yPos, zPos));
+
+        float rColor = ((rand() % 100) / 200.0) + 0.5;
+        float gColor = ((rand() % 100) / 200.0) + 0.5;
+        float bColor = ((rand() % 100) / 200.0) + 0.5;
+        lightColors.push_back(glm::vec3(rColor, gColor, bColor));
+    }
 
 }
 
