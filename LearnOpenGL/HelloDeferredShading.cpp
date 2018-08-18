@@ -17,6 +17,7 @@
 #include "utils.hpp"
 #include "shader_m.h"
 #include "model.h"
+#include "camera.h"
 
 using namespace std;
 
@@ -31,6 +32,8 @@ vector<glm::vec3> lightColors;
 unsigned int gBuffer;
 unsigned int gPosition, gNormal, gAlbedoSpec;
 unsigned int rboDepth;
+
+Camera camera(glm::vec3(0.0f, 0.0f, 5.0f));
 
 void init(GLFWwindow* window)
 {
@@ -113,6 +116,23 @@ void init(GLFWwindow* window)
 
 void draw()
 {
+    glBindFramebuffer(GL_FRAMEBUFFER, gBuffer);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float) SRC_WIDTH / SRC_HEIGHT, 0.1f, 100.0f);
+        glm::mat4 view = camera.GetViewMatrix();
+        glm::mat4 model = glm::mat4(1.0f);
+        shaderGeometryPass->use();
+        shaderGeometryPass->setMat4("projection", projection);
+        shaderGeometryPass->setMat4("view", view);
+        for(unsigned int i = 0; i < lightPositions.size(); i++)
+        {
+            model = glm::mat4(1.0f);
+            model = glm::translate(model, objectPositions[i]);
+            model = glm::scale(model, glm::vec3(0.3f));
+            shaderGeometryPass->setMat4("model", model);
+            cyborg->Draw(*shaderGeometryPass);
+        }
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
 
