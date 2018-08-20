@@ -21,6 +21,12 @@
 
 using namespace std;
 
+void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+void process_input(GLFWwindow *window);
+void renderQuad();
+
+GLFWwindow* mainWin;
 Shader *shaderGeometryPass, *shaderLightingPass, *shaderLightBox;
 
 Model *cyborg;
@@ -34,9 +40,21 @@ unsigned int gPosition, gNormal, gAlbedoSpec;
 unsigned int rboDepth;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 5.0f));
+float lastX = (float)SRC_WIDTH / 2.0;
+float lastY = (float)SRC_HEIGHT / 2.0;
+bool firstMouse = true;
+
+float deltaTime = 0.0f;
+float lastFrame = 0.0f;
+
 
 void init(GLFWwindow* window)
 {
+    mainWin = window;
+    glfwSetCursorPosCallback(window, mouse_callback);
+    glfwSetScrollCallback(window, scroll_callback);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
     glEnable(GL_DEPTH_TEST);
 
     shaderGeometryPass = new Shader("g_buffer.vs", "g_buffer.fs");
@@ -116,6 +134,12 @@ void init(GLFWwindow* window)
 
 void draw()
 {
+    float currentFrame = glfwGetTime();
+    deltaTime = currentFrame - lastFrame;
+    lastFrame = currentFrame;
+
+    process_input(mainWin);
+
     glBindFramebuffer(GL_FRAMEBUFFER, gBuffer);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float) SRC_WIDTH / SRC_HEIGHT, 0.1f, 100.0f);
@@ -124,7 +148,7 @@ void draw()
         shaderGeometryPass->use();
         shaderGeometryPass->setMat4("projection", projection);
         shaderGeometryPass->setMat4("view", view);
-        for(unsigned int i = 0; i < lightPositions.size(); i++)
+        for(unsigned int i = 0; i < objectPositions.size(); i++)
         {
             model = glm::mat4(1.0f);
             model = glm::translate(model, objectPositions[i]);
@@ -133,11 +157,111 @@ void draw()
             cyborg->Draw(*shaderGeometryPass);
         }
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    shaderLightingPass->use();
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, gPosition);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, gNormal);
+    glActiveTexture(GL_TEXTURE2);
+    glBindTexture(GL_TEXTURE_2D, gAlbedoSpec);
+    float constant = 1.0;
+    float linear = 0.7;
+    float quadratic = 1.8;
+    for(unsigned int i = 0; i < lightPositions.size(); i++)
+    {
+        string sposition = "lights[" + to_string(i) + "].Position";
+        string scolor = "lights[" + to_string(i) + "].Color";
+        string slinear = "lights[" + to_string(i) + "].Linear";
+        string squadratic = "lights[" + to_string(i) + "].Quadratic";
+        shaderLightingPass->setVec3(sposition.c_str(), lightPositions[i]);
+        shaderLightingPass->setVec3(scolor.c_str(), lightColors[i]);
+        shaderLightingPass->setFloat(slinear.c_str(), linear);
+        shaderLightingPass->setFloat(squadratic.c_str(), quadratic);
+    }
+    shaderLightingPass->setVec3("viewPos", camera.Position);
+    renderQuad();
 }
 
+unsigned int quadVAO = 0, quadVBO;
+void renderQuad()
+{
+    if(quadVAO == 0)
+    {
+        float quadVertices[] = {
+            // positions        // texture Coords
+            -1.0f,  1.0f, 0.0f, 0.0f, 1.0f,
+            -1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
+             1.0f,  1.0f, 0.0f, 1.0f, 1.0f,
+             1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
+        };
+        glGenVertexArrays(1, &quadVAO);
+        glBindVertexArray(quadVAO);
+        glGenBuffers(1, &quadVBO);
+        glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), quadVertices, GL_STATIC_DRAW);
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0);
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
+    }
+    glBindVertexArray(quadVAO);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    glBindVertexArray(0);
+}
 
 void clean()
 {
 }
+
+void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+    if (firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+
+    lastX = xpos;
+    lastY = ypos;
+
+    camera.ProcessMouseMovement(xoffset, yoffset);
+}
+
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    camera.ProcessMouseScroll(yoffset);
+}
+
+void process_input(GLFWwindow *window)
+{
+    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+    {
+        glfwSetWindowShouldClose(window, true);
+    }
+
+    if(glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+    {
+        camera.ProcessKeyboard(FORWARD, deltaTime);
+    }
+    if(glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+    {
+        camera.ProcessKeyboard(BACKWARD, deltaTime);
+    }
+    if(glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+    {
+        camera.ProcessKeyboard(LEFT, deltaTime);
+    }
+    if(glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+    {
+        camera.ProcessKeyboard(RIGHT, deltaTime);
+    }
+}
+
 
 #endif
