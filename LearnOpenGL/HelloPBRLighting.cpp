@@ -7,3 +7,28 @@
 //
 
 #include <stdio.h>
+
+#include "LearnOpenGL.h"
+
+#ifdef HELLO_PBRLIGHTING
+
+#include "shader_m.h"
+
+Shader *shader;
+
+void init(GLFWwindow* window)
+{
+    shader = new Shader("pbr.vert", "pbr.frag");
+}
+
+void draw()
+{
+
+}
+
+void clean()
+{
+
+}
+
+#endif

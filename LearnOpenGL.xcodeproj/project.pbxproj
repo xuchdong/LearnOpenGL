@@ -41,6 +41,7 @@
 		4100C9E32110AD6D00C24683 /* HelloBlending.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9E22110AD6D00C24683 /* HelloBlending.cpp */; };
 		4100C9E5211341DA00C24683 /* HelloCubemaps.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9E4211341DA00C24683 /* HelloCubemaps.cpp */; };
 		4100C9E821134D8400C24683 /* skybox.vs in Sources */ = {isa = PBXBuildFile; fileRef = 4100C9E621134D8400C24683 /* skybox.vs */; };
+		412DE580213BCC8A00227F1E /* HelloPBRLighting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 412DE57F213BCC8A00227F1E /* HelloPBRLighting.cpp */; };
 		413BA41121016D7B00AF6D95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413BA41021016D7B00AF6D95 /* main.cpp */; };
 		41D9518D2114491500B1AF94 /* cube.vs in Sources */ = {isa = PBXBuildFile; fileRef = 41D9518B2114491500B1AF94 /* cube.vs */; };
 		41D951942118957B00B1AF94 /* HelloShadowMapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41D951932118957B00B1AF94 /* HelloShadowMapping.cpp */; };
@@ -111,6 +112,7 @@
 		4100C9E4211341DA00C24683 /* HelloCubemaps.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloCubemaps.cpp; sourceTree = "<group>"; };
 		4100C9E621134D8400C24683 /* skybox.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = skybox.vs; sourceTree = "<group>"; };
 		4100C9E721134D8400C24683 /* skybox.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = skybox.fs; sourceTree = "<group>"; };
+		412DE57F213BCC8A00227F1E /* HelloPBRLighting.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloPBRLighting.cpp; sourceTree = "<group>"; };
 		413BA40D21016D7B00AF6D95 /* LearnOpenGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LearnOpenGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		413BA41021016D7B00AF6D95 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		41D9518B2114491500B1AF94 /* cube.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cube.vs; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				41D9519A211DE13300B1AF94 /* utils.hpp */,
 				41D9519C21210DB100B1AF94 /* HelloBloom.cpp */,
 				41D951B021232ED300B1AF94 /* HelloDeferredShading.cpp */,
+				412DE57F213BCC8A00227F1E /* HelloPBRLighting.cpp */,
 			);
 			path = LearnOpenGL;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				4100C9E821134D8400C24683 /* skybox.vs in Sources */,
 				413BA41121016D7B00AF6D95 /* main.cpp in Sources */,
 				4100C9952101D5E000C24683 /* glad.c in Sources */,
+				412DE580213BCC8A00227F1E /* HelloPBRLighting.cpp in Sources */,
 				41D9519D21210DB100B1AF94 /* HelloBloom.cpp in Sources */,
 				4100C9A92103829600C24683 /* HelloShaderEX.cpp in Sources */,
 				4100C9AE210383BF00C24683 /* hello_shaderex.vs in Sources */,

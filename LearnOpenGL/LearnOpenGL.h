@@ -13,7 +13,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#define HELLO_DEFERREDSHADING
+#define HELLO_PBRLIGHTING
 
 #define SRC_WIDTH   800
 #define SRC_HEIGHT  600
