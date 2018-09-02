@@ -12,13 +12,31 @@
 
 #ifdef HELLO_PBRLIGHTING
 
+#include <vector>
+
 #include "shader_m.h"
 
 Shader *shader;
 
+vector<glm::vec3> lightPositions;
+vector<glm::vec3> lightColors;
+
 void init(GLFWwindow* window)
 {
     shader = new Shader("pbr.vert", "pbr.frag");
+    shader->use();
+    shader->setVec3("albedo", 0.5f, 0.0f, 0.0f);
+    shader->setFloat("ao", 1.0f);
+
+    lightPositions.push_back(glm::vec3(-10.0f,  10.0f, 10.0f));
+    lightPositions.push_back(glm::vec3( 10.0f,  10.0f, 10.0f));
+    lightPositions.push_back(glm::vec3(-10.0f, -10.0f, 10.0f));
+    lightPositions.push_back(glm::vec3( 10.0f, -10.0f, 10.0f));
+
+    lightColors.push_back(glm::vec3(300.0f, 300.0f, 300.0f));
+    lightColors.push_back(glm::vec3(300.0f, 300.0f, 300.0f));
+    lightColors.push_back(glm::vec3(300.0f, 300.0f, 300.0f));
+    lightColors.push_back(glm::vec3(300.0f, 300.0f, 300.0f));
 }
 
 void draw()
