@@ -123,6 +123,7 @@ void renderSphere()
     if(sphereVAO == 0)
     {
         glGenVertexArrays(1, &sphereVAO);
+
         unsigned int vbo, ebo;
         glGenBuffers(1, &vbo);
         glGenBuffers(1, &ebo);
@@ -169,7 +170,6 @@ void renderSphere()
                     indices.push_back((y + 1)   * (X_SEGMENTS + 1) + x);
                     indices.push_back(y         * (X_SEGMENTS + 1) + x);
                 }
-
             }
             oddRow = !oddRow;
         }
@@ -199,17 +199,18 @@ void renderSphere()
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
         float stride = (3 + 2 + 3) * sizeof(float);
-
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, (void *) 0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, (void*) 0);
         glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, stride, (void *)(3 + sizeof(float)));
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, stride, (void*)(3 * sizeof(float)));
         glEnableVertexAttribArray(2);
-        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, stride, (void *)(5 + sizeof(float)));
+        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, stride, (void*)(5 * sizeof(float)));
     }
+
     glBindVertexArray(sphereVAO);
     glDrawElements(GL_TRIANGLE_STRIP, indexCount, GL_UNSIGNED_INT, 0);
 }
+
 
 
 void clean()
