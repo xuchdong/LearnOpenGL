@@ -20,11 +20,21 @@
 
 using namespace std;
 
+void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+void process_input(GLFWwindow* window);
 void renderSphere();
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+float lastX = SRC_WIDTH / 2;
+float lastY = SRC_HEIGHT / 2;
+bool firstMouse = true;
+
+float deltaTime = 0.0f;
+float lastFrame = 0.0f;
 
 Shader *shader;
+GLFWwindow* mainWin;
 
 vector<glm::vec3> lightPositions;
 vector<glm::vec3> lightColors;
@@ -35,6 +45,11 @@ float spacing = 2.5;
 
 void init(GLFWwindow* window)
 {
+    mainWin = window;
+    glfwSetCursorPosCallback(window, mouse_callback);
+    glfwSetScrollCallback(window, scroll_callback);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
     glEnable(GL_DEPTH_TEST);
     shader = new Shader("pbr.vert", "pbr.frag");
     shader->use();
@@ -57,20 +72,26 @@ void init(GLFWwindow* window)
 
 void draw()
 {
-    glClear(GL_DEPTH_BUFFER_BIT);
+    float currentFrame = glfwGetTime();
+    deltaTime = currentFrame - lastFrame;
+    lastFrame = currentFrame;
+
+    process_input(mainWin);
+
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     shader->use();
     glm::mat4 view = camera.GetViewMatrix();
     shader->setMat4("view", view);
     shader->setVec3("camPos", camera.Position);
 
-    glm::mat4 model;
+    glm::mat4 model = glm::mat4(1.0f);
     for(int row = 0; row < nrRows; ++row)
     {
-        shader->setFloat("metallic", (float) row / nrRows);
+        shader->setFloat("metallic", (float) row / (float)nrRows);
         for(int col = 0; col < nrColumns; ++col)
         {
             shader->setFloat("roughness", glm::clamp((float) col / nrColumns, 0.05f, 1.0f));
-            model = glm::mat4();
+            model = glm::mat4(1.0f);
             model = glm::translate(model, glm::vec3(
                 (col - (nrColumns / 2)) * spacing,
                 (row - (nrRows / 2)) * spacing,
@@ -79,6 +100,19 @@ void draw()
             shader->setMat4("model", model);
             renderSphere();
         }
+    }
+
+    for(unsigned int i = 0; i < lightPositions.size(); ++i)
+    {
+        glm::vec3 newPos = lightPositions[i];
+        shader->setVec3("lightPositions[" + to_string(i) + "]", newPos);
+        shader->setVec3("lightColors[" + to_string(i) + "]", lightColors[i]);
+
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, newPos);
+        model = glm::scale(model, glm::vec3(0.5f));
+        shader->setMat4("model", model);
+        renderSphere();
     }
 }
 
@@ -132,8 +166,8 @@ void renderSphere()
             {
                 for(int x = X_SEGMENTS; x >= 0; --x)
                 {
-                    indices.push_back(y         * (X_SEGMENTS + 1) + x);
                     indices.push_back((y + 1)   * (X_SEGMENTS + 1) + x);
+                    indices.push_back(y         * (X_SEGMENTS + 1) + x);
                 }
 
             }
@@ -183,4 +217,50 @@ void clean()
 
 }
 
+void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+    if (firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+
+    lastX = xpos;
+    lastY = ypos;
+
+    camera.ProcessMouseMovement(xoffset, yoffset);
+}
+
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    camera.ProcessMouseScroll(yoffset);
+}
+
+void process_input(GLFWwindow *window)
+{
+    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+    {
+        glfwSetWindowShouldClose(window, true);
+    }
+    if(glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+    {
+        camera.ProcessKeyboard(FORWARD, deltaTime);
+    }
+    if(glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+    {
+        camera.ProcessKeyboard(BACKWARD, deltaTime);
+    }
+    if(glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+    {
+        camera.ProcessKeyboard(LEFT, deltaTime);
+    }
+    if(glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+    {
+        camera.ProcessKeyboard(RIGHT, deltaTime);
+    }
+}
 #endif
