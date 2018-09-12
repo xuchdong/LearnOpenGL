@@ -1,6 +1,7 @@
 #version 330 core
-out vec4 FragColor
-in vec2 TexCoords
+out vec4 FragColor;
+
+in vec2 TexCoords;
 in vec3 WordPos;
 in vec3 Normal;
 
@@ -75,7 +76,7 @@ void main()
         float G = GeometrySmith(N, V, L, roughness); 
         vec3 F = fresnelSchlick(max(dot(H, V), 0.0), F0);
 
-        vec3 nom = NDF * G * F:
+        vec3 nom = NDF * G * F;
         float denom = 4 * max(dot(N, V), 0.0) * max(dot(N, L), 0.0) + 0.001;
         vec3 specular = nom / denom;
 
