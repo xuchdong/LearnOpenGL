@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include "LearnOpenGL.h"
 #ifdef HELLO_PBR_IBL
+#include <vector>
 #include "shader_m.h"
 
 #define SRC_WIDTH   800
@@ -18,6 +19,9 @@ GLFWwindow* mainWin;
 Shader* pbrShader;
 Shader* cubemapShader;
 Shader* backgroundShader;
+
+vector<glm::vec3> lightPositions;
+vector<glm::vec3> lightColors;
 
 void init(GLFWwindow* window)
 {
@@ -32,6 +36,16 @@ void init(GLFWwindow* window)
 
     backgroundShader->use();
     backgroundShader->setInt("environmentMap", 0);
+
+    lightPositions.push_back(glm::vec3(-10.0f,  10.0f, 10.0f));
+    lightPositions.push_back(glm::vec3( 10.0f,  10.0f, 10.0f));
+    lightPositions.push_back(glm::vec3(-10.0f, -10.0f, 10.0f));
+    lightPositions.push_back(glm::vec3( 10.0f, -10.0f, 10.0f));
+
+    lightColors.push_back(glm::vec3(300.0f, 300.0f, 300.0f));
+    lightColors.push_back(glm::vec3(300.0f, 300.0f, 300.0f));
+    lightColors.push_back(glm::vec3(300.0f, 300.0f, 300.0f));
+    lightColors.push_back(glm::vec3(300.0f, 300.0f, 300.0f));
 }
 
 void draw()
