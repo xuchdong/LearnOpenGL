@@ -11,9 +11,11 @@
 #ifdef HELLO_PBR_IBL
 #include <vector>
 #include "shader_m.h"
+#include "stb_image.h"
 
 #define SRC_WIDTH   800
 #define SRC_HEIGHT  600
+string srcBasepath = "/Users/xuchdong/xuchdong/LearnOpenGL/src/";
 
 GLFWwindow* mainWin;
 Shader* pbrShader;
@@ -24,6 +26,7 @@ vector<glm::vec3> lightPositions;
 vector<glm::vec3> lightColors;
 
 unsigned int captureFBO, captureRBO;
+unsigned int hdrTexture;
 
 void init(GLFWwindow* window)
 {
@@ -56,6 +59,28 @@ void init(GLFWwindow* window)
     glBindRenderbuffer(GL_RENDERBUFFER, captureRBO);
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, 512, 512);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, captureRBO);
+
+    stbi_set_flip_vertically_on_load(true);
+    int width, height, nrComponents;
+    float *data = stbi_loadf((srcBasepath + "newport_loft.hdr").c_str(), &width, &height, &nrComponents, 0);
+    unsigned int hdrTexture;
+    if(data)
+    {
+        glGenTextures(1, &hdrTexture);
+        glBindTexture(GL_TEXTURE_2D, hdrTexture);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, width, height, 0, GL_RGB, GL_FLOAT, data);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+        stbi_image_free(data);
+    }
+    else
+    {
+        cout << "Failed to load HDR image." << endl;
+    }
 }
 
 void draw()
