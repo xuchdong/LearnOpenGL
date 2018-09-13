@@ -23,6 +23,8 @@ Shader* backgroundShader;
 vector<glm::vec3> lightPositions;
 vector<glm::vec3> lightColors;
 
+unsigned int captureFBO, captureRBO;
+
 void init(GLFWwindow* window)
 {
     mainWin = window;
@@ -46,6 +48,14 @@ void init(GLFWwindow* window)
     lightColors.push_back(glm::vec3(300.0f, 300.0f, 300.0f));
     lightColors.push_back(glm::vec3(300.0f, 300.0f, 300.0f));
     lightColors.push_back(glm::vec3(300.0f, 300.0f, 300.0f));
+
+    glGenFramebuffers(1, &captureFBO);
+    glGenRenderbuffers(1, &captureRBO);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, captureFBO);
+    glBindRenderbuffer(GL_RENDERBUFFER, captureRBO);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, 512, 512);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, captureRBO);
 }
 
 void draw()
